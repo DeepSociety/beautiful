@@ -12,9 +12,9 @@
 <a href="#"><img title="Version" src="https://img.shields.io/badge/Version-2.5-green.svg?style=flat-square"></a>
 <a href="#"><img title="Language" src="https://badges.frapsoft.com/bash/v1/bash.png?v=103"></a>
 <a href="https://github.com/HiddenSt4r/followers"><img title="Followers" src="https://img.shields.io/github/followers/HiddenSt4r?color=blue&style=flat-square"></a>
-<a href="https://github.com/HiddenSt4r/beautiful/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/HiddenSt4r/beeth?color=red&style=flat-square"></a>
-<a href="https://github.com/HiddenSt4r/beautiful/network/members"><img title="Forks" src="https://img.shields.io/github/forks/HiddenSt4r/beeth?color=red&style=flat-square"></a>
-<a href="https://github.com/HiddenSt4r/beautiful/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/HiddenSt4r/beeth?label=Watchers&color=blue&style=flat-square"></a>
+<a href="https://github.com/HiddenSt4r/beautiful/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/HiddenSt4r/beautiful?color=red&style=flat-square"></a>
+<a href="https://github.com/HiddenSt4r/beautiful/network/members"><img title="Forks" src="https://img.shields.io/github/forks/HiddenSt4r/beautiful?color=red&style=flat-square"></a>
+<a href="https://github.com/HiddenSt4r/beautiful/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/HiddenSt4r/beautiful?label=Watchers&color=blue&style=flat-square"></a>
 
 </div>
 
