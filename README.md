@@ -1,7 +1,7 @@
 # beautiful
 
 <p align="center">
-<a href="#"><img title="beautiful" src="https://emailspoofbyharris.000webhostapp.com/pro/beautiful.png"></a>
+<a href="#"><img title="beautiful" src="https://emailspoofbyharris.000webhostapp.com/pro/beautiful.jpg"></a>
 </p>
 <p align="center">
 <a href="https://github.com/HiddenSt4r"><img title="Author" src="https://img.shields.io/badge/Author-HiddenSt4r-svg?style=for-the-badge&logo=github"></a>
