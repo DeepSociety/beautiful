@@ -1,0 +1,1434 @@
+#Coded by https://github.com/HiddenSt4r
+#Si copias deja creditos 😛
+
+rr="\e[0;91m"
+r="\e[1;91m"
+vv="\e[0;92m"
+v="\e[1;92m"
+aa="\e[0;93m"
+a="\e[1;93m"
+b="\e[1;39m"
+mm="\e[0;96m"
+m="\e[1;96m"
+zz="\e[0;94m"
+z="\e[1;94m"
+ll="\e[0;35m"
+l="\e[1;35m"
+g="\e[1;30m"
+d="\e[0m"
+o="$v[$b 1$a ]$b"
+t="$v[$b 2$a ]$b"
+th="$v[$b 3$a ]$b"
+f="$v[$b 4$a ]$b"
+e="$r[!]$b Opción invalida"
+i="$v[$b 99$a ]$b Volver al menú"
+eje="$v[${b}*$a]$b Ejemplo:"
+opt="$v[$b*$a]$b Elige una opción:"
+no="$r[!]$b No se descargo, comprueba tu conexión"
+nose=`shuf -i 1-9 -n 1`
+nose1=`shuf -i 1-9 -n 1`
+nose2=`shuf -i 1-9 -n 1`
+s="m"
+crnd="\e[1;3$nose$s"
+crnd1="\e[1;3$nose1$s"
+crnd2="\e[1;3$nose1$s"
+listo(){
+echo -e "$v[$b*$a]$b Listo, banner agregado(abre nueva ventana)"
+sleep 1
+menu
+}
+
+banner(){
+clear
+echo -e "$crnd    _                      _   _  __       _ "
+echo -e "$crnd   | |                    | | (_)/ _|     | |"
+echo -e "$crnd1   | |__   ___  __ _ _   _| |_ _| |_ _   _| |"
+echo -e "$crnd   | |_ \ / _ \/ _' | | | | __| |  _| | | | |"
+echo -e "$crnd2   | |_) |  __/ (_| | |_| | |_| | | | |_| | |"
+echo -e "$crnd   |____/ \___|\__,_|\__,_|\__|_|_|  \__,_|_|"
+echo -e "
+ $a   [!]$b          beautiful v1          $a[!]
+ $a   [!]$b https://github.com/HiddenSt4r  $a[!]
+ $a   [!]$b Importante seleccionar la opc 4$a[!]
+ $a   [!]$b   Opc 5 restablece el inicio   $a[!]
+"
+}
+menu(){
+command -v figlet > /dev/null 2>&1 || { echo >&2 -e "$v[*]$b Instalando figlet..."; pkg install figlet -y;}
+if [[ -f $PREFIX/bin/figlet ]];then
+echo
+else
+echo -e "$no"
+sleep 1
+exit 1
+fi
+command -v pwgen > /dev/null 2>&1 || { echo >&2 -e "$v[*]$b Instalando pwgen..."; pkg install pwgen -y;}
+if [[ -f $PREFIX/bin/pwgen ]];then
+echo
+else
+echo -e "$no"
+sleep 1
+exit 1
+fi
+banner
+echo -e "$o Personalizar inicio
+$t Personalizar PS1(entrada de comandos)
+$th Eliminar mensaje de inicio(importante)
+$f Restablecer inicio
+$v[$b 99$a ]$b Salir
+"
+echo -e "$opt"
+read -p ">> " opc
+if [[ $opc == "1" || $opc == "01" ]];then
+pi
+elif [[ $opc == "2" || $opc == "02" ]];then
+pp
+elif [[ $opc == "3" || $opc == "03" ]];then
+if [[ -f $PREFIX/etc/motd ]];then
+rm $PREFIX/etc/motd
+echo -e "$v[$b*$a]$b Mensaje eliminado"
+sleep 1
+menu
+else
+echo -e "$v[$b*$a]$b El mensaje ya esta eliminado"
+sleep 1
+menu
+fi
+elif [[ $opc == "4" || $opc == "04" ]];then
+rs
+elif [[ $opc == "99" ]];then
+exit 1
+else
+echo -e "$e"
+sleep 1
+menu
+fi
+}
+
+pi(){
+banner
+echo -e "$o Personalizar con banner de texto(figlet)
+$t Personalizar con banner(elegir)
+$th Personalizar con banner(tuyo)
+$f Personalizar con paquetes
+$i
+"
+echo -e "$opt"
+read -p ">> " opc1
+if [[ $opc1 == "1" || $opc1 == "01" ]];then
+fig
+elif [[ $opc1 == "2" || $opc1 == "02" ]];then
+belegir
+elif [[ $opc1 == "3" || $opc1 == "03" ]];then
+bannert
+elif [[ $opc1 == "4" || $opc1 == "04" ]];then
+bpaq
+elif [[ $opc1 == "99" ]];then
+menu
+else
+echo -e "$e"
+sleep 1
+pi
+fi
+}
+
+bpaq(){
+banner
+echo -e "$o Nofetch
+$t Screenfetch
+$th cowsay
+$f sl(tren animado)\n
+$i\n
+$opt
+"
+read -p ">> " opc9
+if [[ $opc9 == "1" || $opc9 == "01" ]];then
+command -v neofetch > /dev/null 2>&1 || { echo >&2 -e "$v[*]$b Instalando neofetch..."; pkg install neofetch -y;}
+if [[ -f $PREFIX/bin/neofetch ]];then
+echo
+else
+echo -e "$no"
+sleep 1
+exit 1
+fi
+echo -e "
+\n$o Probar demo
+$i
+$opt
+"
+read -p ">> " neoread
+if [[ $neoread == "1" || $neoread == "01" ]];then
+neofetch
+sleep 2
+echo -e "$o Elegir
+$i
+$opt
+"
+read -p ">> " opcneo
+if [[ $opcneo == "1" || $opcneo == "01" ]];then
+echo "neofetch" >> $PREFIX/etc/bash.bashrc
+listo
+elif [[ $opcneo == "99" ]];then
+bpaq
+else
+echo -e "$e"
+sleep 1
+bpaq
+fi
+
+elif [[ $neoread == "99" ]];then
+bpaq
+
+else
+echo -e "$e"
+sleep 1
+bpaq
+fi
+
+elif [[ $opc9 == "2" || $opc9 == "02" ]];then
+command -v screenfetch > /dev/null 2>&1 || { echo >&2 -e "$v[*]$b Instalando screenfetch..."; pkg install screenfetch -y;}
+if [[ -f $PREFIX/bin/screenfetch ]];then
+echo
+else
+echo -e "$no"
+sleep 1
+exit 1
+fi
+echo -e "
+\n$o Probar demo
+$i
+$opt
+"
+read -p ">> " scrread
+if [[ $scrread == "1" || $scrread == "01" ]];then
+screenfetch
+sleep 2
+echo -e "\n$o Elegir
+$i
+$opt
+"
+read -p ">> " opcscr
+if [[ $opcscr == "1" || $opcscr == "01" ]];then
+echo "screenfetch" >> $PREFIX/etc/bash.bashrc
+listo
+elif [[ $opcscr == "99" ]];then
+bpaq
+else
+echo -e "$e"
+sleep 1
+bpaq
+fi
+
+elif [[ $scrread == "99" ]];then
+bpaq
+
+else
+echo -e "$e"
+sleep 1
+bpaq
+fi
+
+elif [[ $opc9 == "4" || $opc9 == "04" ]];then
+command -v sl > /dev/null 2>&1 || { echo >&2 -e "$v[*]$b Instalando sl..."; pkg install sl -y;}
+if [[ -f $PREFIX/bin/sl ]];then
+echo
+else
+echo -e "$no"
+sleep 1
+exit 1
+fi
+echo -e "
+\n$o Probar demo
+$i
+$opt
+"
+read -p ">> " slread
+if [[ $slread == "1" || $slread == "01" ]];then
+sl
+echo -e "\n$o Elegir
+$i
+$opt
+"
+read -p ">> " opcsl
+if [[ $opcsl == "1" || $opcsl == "01" ]];then
+echo "sl" >> $PREFIX/etc/bash.bashrc
+listo
+elif [[ $opcsl == "99" ]];then
+bpaq
+else
+echo -e "$e"
+sleep 1
+bpaq
+fi
+
+elif [[ $slread == "99" ]];then
+bpaq
+
+else
+echo -e "$e"
+sleep 1
+bpaq
+fi
+
+elif [[ $opc9 == "99" ]];then
+pi
+
+elif [[ $opc9 == "3" || $opc9 == "03" ]];then
+command -v cowsay > /dev/null 2>&1 || { echo >&2 -e "$v[*]$b Instalando cowsay..."; pkg install cowsay -y;}
+if [[ -f $PREFIX/bin/cowsay ]];then
+echo
+else
+echo -e "$no"
+sleep 1
+exit 1
+fi
+echo -e "$v[*]$b Estira la pantalla para una mejor visualización(desliza con 2 dedos)"
+sleep 3
+echo -e "$v[$b*$a]$b Selecciona el banner:
+$v[${b}1$a]$b Banner - default
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f default Tunombre
+echo -e "
+$v[${b}2$a]$b Banner - Eyes
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f eyes Tunombre
+echo -e "
+$v[${b}3$a]$b Banner - stegosaurus
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f stegosaurus Tunombre
+echo -e "
+$v[${b}4$a]$b Banner - Tux
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f tux Tunombre
+echo -e "
+$v[${b}5$a]$b Banner - ghostbusters
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f ghostbusters Tunombre
+echo -e "
+$v[${b}6$a]$b Banner - Dragon
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f dragon Tunombre
+echo -e "
+$v[${b}7$a]$b Banner - beavis.zen
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f beavis.zen Tunombre
+echo -e "
+$v[${b}8$a]$b Banner - bong
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f bong Tunombre
+echo -e "
+$v[${b}9$a]$b Banner - bud-frogs
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f bud-frogs Tunombre
+echo -e "
+$v[${b}10$a]$b Banner - bunny
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f bunny Tunombre
+echo -e "
+$v[${b}11$a]$b Banner - cheese
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f cheese Tunombre
+echo -e "
+$v[${b}12$a]$b Banner - cower
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f cower Tunombre
+echo -e "
+$v[${b}13$a]$b Banner - daemon
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f daemon Tunombre
+echo -e "
+$v[${b}14$a]$b Banner - dragon-and-cow
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f dragon-and-cow Tunombre
+echo -e "
+$v[${b}15$a]$b Banner - elephant-in-snake
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f elephant-in-snake Tunombre
+echo -e "
+$v[${b}16$a]$b Banner - elephant
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f elephant Tunombre
+echo -e "
+$v[${b}17$a]$b Banner - flaming-sheep
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f flaming-sheep Tunombre
+echo -e "
+$v[${b}18$a]$b Banner - head-in
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f head-in Tunombre
+echo -e "
+$v[${b}19$a]$b Banner - hellokitty
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f hellokitty Tunombre
+echo -e "
+$v[${b}20$a]$b Banner - kiss
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f kiss Tunombre
+echo -e "
+$v[${b}21$a]$b Banner - kitty
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f kitty Tunombre
+echo -e "
+$v[${b}22$a]$b Banner - koala
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f koala Tunombre
+echo -e "
+$v[${b}23$a]$b Banner - kosh
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f kosh Tunombre
+echo -e "
+$v[${b}24$a]$b Banner - luke-koala
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f luke-koala Tunombre
+echo -e "
+$v[${b}25$a]$b Banner - meow
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f meow Tunombre
+echo -e "
+$v[${b}26$a]$b Banner - milk
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f milk Tunombre
+echo -e "
+$v[${b}27$a]$b Banner - moofasa
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f moofasa Tunombre
+echo -e "
+$v[${b}28$a]$b Banner - moose
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f moose Tunombre
+echo -e "
+$v[${b}29$a]$b Banner - mutilated
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f mutilated Tunombre
+echo -e "
+$v[${b}30$a]$b Banner - ren
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f ren Tunombre
+echo -e "
+$v[${b}31$a]$b Banner - sheep
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f sheep Tunombre
+echo -e "
+$v[${b}32$a]$b Banner - skeleton
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f skeleton Tunombre
+echo -e "
+$v[${b}33$a]$b Banner - stimpy
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f stimpy Tunombre
+echo -e "
+$v[${b}34$a]$b Banner - three-eyes
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f three-eyes Tunombre
+echo -e "
+$v[${b}35$a]$b Banner - turkey
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f turkey Tunombre
+echo -e "
+$v[${b}36$a]$b Banner - turtle
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f turtle Tunombre
+echo -e "
+$v[${b}37$a]$b Banner - vader-koala
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f vader-koala Tunombre
+echo -e "
+$v[${b}38$a]$b Banner - vader
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f vader Tunombre
+echo -e "
+$v[${b}39$a]$b Banner - www
+$v[$b*$a]$b Ejemplo:
+"
+cowsay -f www Tunombre
+echo -e "\n
+$o Elegir banner
+$i
+$opt
+"
+read -p ">> " mascota
+if [[ $mascota == "1" || $mascota == "01" ]];then
+read -p $'\e[1;32m[\e[1;39m*\e[1;33m]\e[1;39m Escribe el numero del banner deseado > ' masop
+case $masop in
+1)cows="default"
+color
+c_coman
+build_mascota
+;;
+2)cows="eyes"
+color
+c_coman
+build_mascota
+;;
+3)cows="stegosaurus"
+color
+c_coman
+build_mascota
+;;
+4)cows="tux"
+color
+c_coman
+build_mascota
+;;
+5)cows="ghostbusters"
+color
+c_coman
+build_mascota
+;;
+6)cows="dragon"
+color
+c_coman
+build_mascota
+;;
+7)cows="beavis.zen"
+color
+c_coman
+build_mascota
+;;
+8)cows="bong"
+color
+c_coman
+build_mascota
+;;
+9)cows="bud-frogs"
+color
+c_coman
+build_mascota
+;;
+10)cows="bunny"
+color
+c_coman
+build_mascota
+;;
+11)cows="cheese"
+color
+c_coman
+build_mascota
+;;
+12)cows="cower"
+color
+c_coman
+build_mascota
+;;
+13)cows="daemon"
+color
+c_coman
+build_mascota
+;;
+14)cows="dragon-and-cow"
+color
+c_coman
+build_mascota
+;;
+15)cows="elephant-in-snake"
+color
+c_coman
+build_mascota
+;;
+16)cows="elephant"
+color
+c_coman
+build_mascota
+;;
+17)cows="flaming-sheep"
+color
+c_coman
+build_mascota
+;;
+18)cows="head-in"
+color
+c_coman
+build_mascota
+;;
+19)cows="hellokitty"
+color
+c_coman
+build_mascota
+;;
+20)cows="kiss"
+color
+c_coman
+build_mascota
+;;
+21)cows="kitty"
+color
+c_coman
+build_mascota
+;;
+22)cows="koala"
+color
+c_coman
+build_mascota
+;;
+23)cows="kosh"
+color
+c_coman
+build_mascota
+;;
+24)cows="luke-koala"
+color
+c_coman
+build_mascota
+;;
+25)cows="meow"
+color
+c_coman
+build_mascota
+;;
+26)cows="milk"
+color
+c_coman
+build_mascota
+;;
+27)cows="moofasa"
+color
+c_coman
+build_mascota
+;;
+28)cows="moose"
+color
+c_coman
+build_mascota
+;;
+29)cows="mutilated"
+color
+c_coman
+build_mascota
+;;
+30)cows="ren"
+color
+c_coman
+build_mascota
+;;
+31)cows="sheep"
+color
+c_coman
+build_mascota
+;;
+32)cows="skeleton"
+color
+c_coman
+build_mascota
+;;
+33)cows="stimpy"
+color
+c_coman
+build_mascota
+;;
+34)cows="three-eyes"
+color
+c_coman
+build_mascota
+;;
+35)cows="turkey"
+color
+c_coman
+build_mascota
+;;
+36)cows="turtle"
+color
+c_coman
+build_mascota
+;;
+37)cows="vader-koala"
+color
+c_coman
+build_mascota
+;;
+38)cows="vader"
+color
+c_coman
+build_mascota
+;;
+39)cows="www"
+color
+c_coman
+build_mascota
+;;
+*)echo -e "$e"
+sleep 1
+bpaq
+;;
+esac
+
+elif [[ $mascota == "99" ]];then
+bpaq
+
+else
+echo -e "$e"
+sleep 1
+bpaq
+fi
+else
+echo -e "$e"
+sleep 1
+bpaq
+fi
+}
+
+build_mascota(){
+echo -e "$v[$b*$a]$b Escribe la palabra que aparecera como mensaje, esta remplazará a 'Tunombre'"
+read -p $'\e[1;32m[\e[1;39m*\e[1;33m]\e[1;39m Escribe la palabra > ' namebp
+echo -e "$r[!]$b Escribe algo\n"
+if [[ $namebp == "" ]];then
+build_mascota
+else
+echo "echo -e '"$cc"'" >> $PREFIX/etc/bash.bashrc
+echo "cowsay -f $cows $namebp" >> $PREFIX/etc/bash.bashrc
+echo "echo -e '"$ccc"'" >> $PREFIX/etc/bash.bashrc
+listo
+fi
+}
+
+fig(){
+echo -e "$v[${b}1$a]$b Fuente - banner
+$eje"
+figlet -f banner beautiful
+echo -e "$v[${b}2$a]$b Fuente - big
+$eje"
+figlet -f big beautiful
+echo -e "$v[${b}3$a]$b Fuente - block
+$eje"
+figlet -f block beautiful
+echo -e "$v[${b}4$a]$b Fuente - bubble
+$eje"
+figlet -f bubble beautiful
+echo -e "$v[${b}5$a]$b Fuente - digital
+$eje"
+figlet -f digital beautiful
+echo -e "$v[${b}6$a]$b Fuente - ivrit
+$eje"
+figlet -f ivrit beautiful
+echo -e "$v[${b}7$a]$b Fuente - lean
+$eje"
+figlet -f lean beautiful
+echo -e "$v[${b}8$a]$b Fuente - mini
+$eje"
+figlet -f mini beautiful
+echo -e "$v[${b}9$a]$b Fuente - rounded
+$eje"
+figlet -f rounded beautiful
+echo -e "$v[${b}10$a]$b Fuente - script
+$eje"
+figlet -f script beautiful
+echo -e "$v[${b}11$a]$b Fuente - shadow
+$eje"
+figlet -f shadow beautiful
+echo -e "$v[${b}12$a]$b Fuente - slant
+$eje"
+figlet -f slant beautiful
+echo -e "$v[${b}13$a]$b Fuente - small
+$eje"
+figlet -f small beautiful
+echo -e "$v[${b}14$a]$b Fuente - smscript
+$eje"
+figlet -f smscript beautiful
+echo -e "$v[${b}15$a]$b Fuente - smshadow
+$eje"
+figlet -f smshadow beautiful
+echo -e "$v[${b}16$a]$b Fuente - smslant
+$eje"
+figlet -f smslant beautiful
+echo -e "$v[${b}17$a]$b Fuente - standard
+$eje"
+figlet -f standard beautiful
+echo -e "$o Elegir fuente
+$t Descargar mas fuentes
+$i"
+echo -e "$opt"
+read -p ">> " n1
+if [[ $n1 == "1" || $n1 == "01" ]];then
+ef
+elif [[ $n1 == "2" || $n1 == "02" ]];then
+dmf
+elif [[ $n1 == "99" ]];then
+pi
+else
+echo -e "$e"
+sleep 1
+pi
+fi
+}
+
+dmf(){
+echo -e "\n$v[$b*$a]$b Para descargar mas fuentes ingresa al siguiente enlace, escoge la fuente que desees y copia su nombre$v SOLO EL NOMBRE
+$v[$b*$a]$b Enlace: http://www.figlet.org/examples.html
+$v[$b*$a]$b Escoge la fuente ejemplo: 3-d
+$v[$b*$a]$b Pega el nombre de la fuente elegida:
+"
+read -p ">> " n4
+if [[ $n4 == "" ]];then
+echo -e "$r[!]$b Fuente no valida"
+sleep 1
+pi
+else
+wget http://www.figlet.org/fonts/$n4.flf -o log
+if [[ -f $n4.flf ]];then
+rm log
+mv $n4.flf $PREFIX/share/figlet
+fuente=$n4.flf
+color
+c_coman
+build_name
+else
+echo -e "$r[!]$b No se descargo conprueba la fuente, o tu conexión"
+sleep 2
+menu
+fi
+fi
+}
+
+ef(){
+echo -e "$v[$b*$a]$b Elige una fuente(la ves arriba de cada ejemplo):"
+read -p ">> " n2
+case $n2 in
+1)fuente="banner"
+color
+c_coman
+build_name
+;;
+2)fuente="big"
+color
+c_coman
+build_name
+;;
+3)fuente="block"
+color
+c_coman
+build_name
+;;
+4)fuente="bubble"
+color
+c_coman
+build_name
+;;
+5)fuente="digital"
+color
+c_coman
+build_name
+;;
+6)fuente="ivrit"
+color
+c_coman
+build_name
+;;
+7)fuente="lean"
+color
+c_coman
+build_name
+;;
+8)fuente="mini"
+color
+c_coman
+build_name
+;;
+9)fuente="rounded"
+color
+c_coman
+build_name
+;;
+10)fuente="script"
+color
+c_coman
+build_name
+;;
+11)fuente="shadow"
+color
+c_coman
+build_name
+;;
+12)fuente="slant"
+color
+c_coman
+build_name
+;;
+13)fuente="small"
+color
+c_coman
+build_name
+;;
+14)fuente="smscript"
+color
+c_coman
+build_name
+;;
+15)fuente="smshadow"
+color
+c_coman
+build_name
+;;
+16)fuente="smslant"
+color
+c_coman
+build_name
+;;
+17)fuente="standard"
+color
+c_coman
+build_name
+;;
+*)echo -e "$e\n"
+ef
+;;
+esac
+}
+
+color(){
+echo -e "\n$v[$b*$a]$b OK, ahora elige el color:"
+echo -e "
+$v[$b 1$v ]$a Amarillo
+$v[$b 2$v ]$aa Amarillo2
+$v[$b 3$v ]$z Azul
+$v[$b 4$v ]$zz Azul2
+$v[$b 5$v ]$v Verde
+$v[$b 6$v ]$vv Verde2
+$v[$b 7$v ]$r Rojo
+$v[$b 8$v ]$rr Rojo2
+$v[$b 9$v ]$m Cyan
+$v[$b 10$v ]$mm Cyan2
+$v[$b 11$v ]$l Lila
+$v[$b 12$v ]$ll Lila2
+$v[$b 13$v ]$g Gris
+$v[$b 14$v ]$b Blanco
+$v[$b 15$v ]$d Default
+"
+read -p $'\e[1;32m[\e[1;39m*\e[1;33m]\e[1;39m Elige el color > ' nc
+case $nc in
+1)cc=$a
+;;
+2)cc=$aa
+;;
+3)cc=$z
+;;
+4)cc=$zz
+;;
+5)cc=$v
+;;
+6)cc=$vv
+;;
+7)cc=$r
+;;
+8)cc=$rr
+;;
+9)cc=$m
+;;
+10)cc=$mm
+;;
+11)cc=$l
+;;
+12)cc=$ll
+;;
+13)cc=$g
+;;
+14)cc=$b
+;;
+15)cc=$d
+;;
+*)echo -e "$e"
+color
+;;
+esac
+}
+
+c_coman(){
+echo -e "\n$v[$b*$a]$b OK, ahora elige el color de la entrada de comandos:"
+echo -e "
+$v[$b 1$v ]$a Amarillo
+$v[$b 2$v ]$aa Amarillo2
+$v[$b 3$v ]$z Azul
+$v[$b 4$v ]$zz Azul2
+$v[$b 5$v ]$v Verde
+$v[$b 6$v ]$vv Verde2
+$v[$b 7$v ]$r Rojo
+$v[$b 8$v ]$rr Rojo2
+$v[$b 9$v ]$m Cyan
+$v[$b 10$v ]$mm Cyan2
+$v[$b 11$v ]$l Lila
+$v[$b 12$v ]$ll Lila2
+$v[$b 13$v ]$g Gris
+$v[$b 14$v ]$b Blanco
+$v[$b 15$v ]$d Default
+"
+read -p $'\e[1;32m[\e[1;39m*\e[1;33m]\e[1;39m Elige el color > ' ncc
+case $ncc in
+1)ccc=$a
+;;
+2)ccc=$aa
+;;
+3)ccc=$z
+;;
+4)ccc=$zz
+;;
+5)ccc=$v
+;;
+6)ccc=$vv
+;;
+7)ccc=$r
+;;
+8)ccc=$rr
+;;
+9)ccc=$m
+;;
+10)ccc=$mm
+;;
+11)ccc=$l
+;;
+12)ccc=$ll
+;;
+13)ccc=$g
+;;
+14)ccc=$b
+;;
+15)ccc=$d
+;;
+*)echo -e "$e"
+color
+;;
+esac
+}
+
+build_name(){
+echo -e "$v[$b*$a]$b Escribe el texto:"
+read -p ">> " nombre
+if [[ $nombre == "" ]];then
+echo -e "$r[!]$b No escribiste nada"
+sleep 1
+pi
+else
+echo "echo -e '"$cc"'" >> $PREFIX/etc/bash.bashrc
+echo "figlet -f $fuente $nombre" >> $PREFIX/etc/bash.bashrc
+echo "echo -e '"$ccc"'" >> $PREFIX/etc/bash.bashrc
+listo
+fi
+}
+
+
+###ELEGIR BANNER
+belegir(){
+echo -e "$v[*]$b Estira la pantalla para una mejor visualización(desliza con 2 dedos)"
+sleep 3
+echo -e "$v[${b}1$a]$b banner - vaca
+$eje"
+cat banner/baca
+echo -e "$v[${b}2$a]$b banner - bash
+$eje"
+cat banner/bash
+echo -e "$v[${b}3$a]$b banner - beef
+$eje"
+cat banner/beef
+echo -e "$v[${b}4$a]$b banner - dragon
+$eje"
+cat banner/dragon
+echo -e "$v[${b}5$a]$b banner - fenix
+$eje"
+cat banner/fenix
+echo -e "$v[${b}6$a]$b banner - go
+$eje"
+cat banner/go
+echo -e "$v[${b}7$a]$b banner - hacker
+$eje"
+cat banner/hacker
+echo -e "$v[${b}8$a]$b banner - isla
+$eje"
+cat banner/isla
+echo -e "$v[${b}9$a]$b banner - java
+$eje"
+cat banner/java
+echo -e "$v[${b}10$a]$b banner - kali
+$eje"
+cat banner/kali
+echo -e "$v[${b}11$a]$b banner - kali2
+$eje"
+cat banner/kali2
+echo -e "$v[${b}12$a]$b banner - linux
+$eje"
+cat banner/linux
+echo -e "$v[${b}13$a]$b banner - pc
+$eje"
+cat banner/pc
+echo -e "$v[${b}14$a]$b banner - python
+$eje"
+cat banner/python
+echo -e "$v[${b}15$a]$b banner - ruby
+$eje"
+cat banner/ruby
+echo -e "$v[${b}16$a]$b banner - shell
+$eje"
+cat banner/shell
+echo -e "$v[${b}17$a]$b banner - swift
+$eje"
+cat banner/swift
+echo -e "$v[${b}18$a]$b banner - ubuntu
+$eje"
+cat banner/ubuntu
+echo -e "\n$v[$b*$a]$b Elige un banner(escribe 99 para volver al menú):"
+read_banner
+}
+
+read_banner(){
+read -p ">> " n3
+case $n3 in
+1)banner="baca"
+color
+c_coman
+build_img
+;;
+2)banner="bash"
+color
+c_coman
+build_img
+;;
+3)banner="beef"
+color
+c_coman
+build_img
+;;
+4)banner="dragon"
+color
+c_coman
+build_img
+;;
+5)banner="fenix"
+color
+c_coman
+build_img
+;;
+6)banner="go"
+color
+c_coman
+build_img
+;;
+7)banner="hacker"
+color
+c_coman
+build_img
+;;
+8)banner="isla"
+color
+c_coman
+build_img
+;;
+9)banner="java"
+color
+c_coman
+build_img
+;;
+10)banner="kali"
+color
+c_coman
+build_img
+;;
+11)banner="kali2"
+color
+c_coman
+build_img
+;;
+12)banner="linux"
+color
+c_coman
+build_img
+;;
+13)banner="pc"
+color
+c_coman
+build_img
+;;
+14)banner="python"
+color
+c_coman
+build_img
+;;
+15)banner="ruby"
+color
+c_coman
+build_img
+;;
+16)banner="shell"
+color
+c_coman
+build_img
+;;
+17)banner="swift"
+color
+c_coman
+build_img
+;;
+18)banner="ubuntu"
+color
+c_coman
+build_img
+;;
+99)pi
+;;
+*)echo -e "$e"
+read_banner
+;;
+esac
+}
+
+build_img(){
+if [[ -d banner ]];then
+SIEXISTE=":V"
+else
+echo -e "$r[!]$b Eliminaste la carpeta banner:("
+exit 1
+fi
+
+if [[ -d $HOME/.images ]];then
+SIEXISTE=":V"
+else
+mkdir $HOME/.images
+fi
+
+cp banner/$banner $HOME/.images
+echo "echo -e '"$cc"'" >> $PREFIX/etc/bash.bashrc
+echo "cat $HOME/.images/$banner" >> $PREFIX/etc/bash.bashrc
+echo "echo -e '"$ccc"'" >> $PREFIX/etc/bash.bashrc
+listo
+}
+
+bannert(){
+echo -e "\n$v[$b*$a]$b Pega el banner en la siguiente inferaz, presiona ctrl x, despues a y, luego enter
+$v[$b*$a]$b Paginas para encontrar banners:
+$v[$b*$a]$b https://www.asciiart.eu/
+$v[$b*$a]$b http://patorjk.com/software/taag/ (solo banners de texto)
+$v[$b*$a]$b https://asciiart.website/
+$v[$b*$a]$b http://www.asciiworld.com/
+$v[$b*$a]$b https://textfancy.com
+$v[$b*$a]$b https://ascii.co.uk/
+$v[$b*$a]$b Presiona enter para abrir la inferaz(pegas el banner) escribe 99 para volver al menú"
+read -p ">> " opc3
+if [[ $opc3 == "99" ]];then
+pi
+else
+rnd=$(pwgen 7 1)
+nano $rnd
+color
+c_coman
+banner2=$rnd
+if [[ -d banner ]];then
+SIEXISTE=":V"
+else
+echo -e "$r[!]$b Eliminaste la carpeta banner:("
+exit 1
+fi
+
+if [[ -d $HOME/.images ]];then
+SIEXISTE=":V"
+else
+mkdir $HOME/.images
+fi
+mv $rnd $HOME/.images
+echo "echo -e '"$cc"'" >> $PREFIX/etc/bash.bashrc
+echo "cat $HOME/.images/$banner2" >> $PREFIX/etc/bash.bashrc
+echo "echo -e '"$ccc"'" >> $PREFIX/etc/bash.bashrc
+listo
+fi
+}
+
+##PERSONALIZAR PS1
+pp(){
+banner
+echo -e "\n$o Personalizar PS1(basico)
+$t Personalizar PS1(con funciones)
+$i\n
+$opt"
+read -p ">> " opc4
+if [[ $opc4 == "1" || $opc4 == "01" ]];then
+ppb
+elif [[ $opc4 == "2" || $opc4 == "02" ]];then
+ppf
+elif [[ $opc4 == "3" || $opc4 == "03" ]];then
+ppb
+elif [[ $opc4 == "4" || $opc4 == "04" ]];then
+ppz
+elif [[ $opc4 == "99" ]];then
+menu
+else
+echo -e "$e"
+sleep 1
+pp
+fi
+}
+
+ppb(){
+echo -e "\n$v[$b*$a]$b Escribe la palabra:
+$v[$b*$a]$b Esta renplazara a $"
+read -p ">> " n5
+if [[ $n5 == "" ]];then
+echo -e "$r[!]$b No escribiste nada"
+sleep 1
+pp
+else
+color
+c_coman
+echo "PS1='$cc$n5 $ccc'" >> $PREFIX/etc/bash.bashrc
+echo -e "$v[$b*$a]$b Listo, PS1 Cambiado(abre nueva ventana)"
+sleep 1
+menu
+fi
+}
+
+ppf(){
+echo -e "\n$v[$b*$a]$b La entrada de comandos se vera algo asi:
+\n \e[1;36m>>\e[1;32mTunombre\e[1;35m@\e[1;33mtermux\e[1;36m<<\e[1;32m [\e[1;33m date +%d/%m/%Y \e[1;32m]\e[1;32m [\e[1;33m date +%H:%M \e[1;32m]
+|\e[1;31m[\e[1;33m bash localhost \e[1;31m]
+|__\e[1;31m[\e[1;33m /aquisemostraralaruta \e[1;31m]
+|
+\e[1;31m|__\e[1;31m[\e[1;36m > \e[1;31m]\e[1;39m
+\n$o Cambiar palabras(solo 2)
+$t Cambiar colores, palabras funciones etc
+$i
+\n$v[$b*$a]$b Elige una opción:"
+read -p ">> " opc6
+
+if [[ $opc6 == "1" || $opc6 == "01" ]];then
+echo
+read -p $'\e[1;32m[\e[1;39m*\e[1;33m]\e[1;39m Escribe la primera palabra(esta renplazara a Tunombre): ' bname
+echo
+read -p $'\e[1;32m[\e[1;39m*\e[1;33m]\e[1;39m Escribe la segunda palabra(esta renplazara a termux): ' bname2
+echo "PS1='\n \e[1;36m>>\e[1;32m$bname\e[1;35m@\e[1;33m$bname2\e[1;36m<<\e[1;32m [\e[1;33m \d\e[1;32m]\e[1;32m [\e[1;33m\t \e[1;32m] 
+|\e[1;31m[\e[1;33m \s \h \e[1;31m]
+|__\e[1;31m[\e[1;33m \w \e[1;31m]
+|
+\e[1;31m|__\e[1;31m[\e[1;36m > \e[1;31m]\e[1;39m '" >> $PREFIX/etc/bash.bashrc
+echo -e "$v[$b*$a]$b Listo, PS1 Cambiado(abre nueva ventana)"
+sleep 1
+menu
+
+elif [[ $opc6 == "2" || $opc6 == "02" ]];then
+echo -e "\n$v[$b*$a]$b Tendras una lista de colores, funciones arriba del PS1, edita su contenido solo el contenido que esta entre comillas, no olvides que el contenido debe iniciar con una comilla y cerrar con otra, cuando termines presiona ctrl x, despues a y, luego enter
+$v[$b*$a]$b Presiona enter para abrir el bash.bashrc
+$v[$b*$a]$b Escribe 99 para volver al menú\n"
+read -p ">> " n6
+if [[ $n6 == "" ]];then
+sed -i "/#/d" $PREFIX/etc/bash.bashrc
+echo "
+#COLORES:
+#Amarillo vivo = $a
+#Amarillo = $aa
+#Azul vivo = $z
+#Azul = $zz
+#Verde vivo = $v
+#Verde = $vv
+#Rojo vivo = $r
+#Rojo = $rr
+#Gris = $g
+#Cyan vivo = $m
+#Cyan = $mm
+#Lila vivo = $l
+#Lila = $ll
+#Blanco = $b
+#Default = #d
+
+#FUNCIONES:
+#\a un caracter ASCII de ring
+#\d la fecha actual en formato dia_sem mes día, dom nov 18
+#\e un caracter ASCII de escape
+#\h el nombre del equipo hasta el primer ., ejemplo linuxtotal de linuxtotal.com.mx
+#\H el nombre del equipo
+#\n nueva línea
+#\r retorno de carro, enter
+#\s el nombre del shell
+#\t el tiempo actual en formato de 24 horas HH:MM:SS
+#\T el tiempo actual en formato de 12 horas HH:MM:SS
+#\@ el tiempo actual en formaro de 12 horas con am/pm
+#\u el usuario actual
+#\v la version de bash
+#\V el número de release de batch, versión + parche
+#\w el directorio de trabajo actual, path
+#\W el nombre del directorio actual
+#\! el número en el historial del comando
+#\# el número de comando de este comando
+#\$ si el usuario es root (UID=0) se indica un #, un usuario normal $
+#\\ diagonal
+#\[ inicio de una secuencia de caracteres no imprimibles
+#\] fin de la secuencia de caracteres no imprimibles
+
+#No coloques # Solo su contenido
+PS1='\n \e[1;36m>>\e[1;32mTunombre\e[1;35m@\e[1;33mtermux\e[1;36m<<\e[1;32m [\e[1;33m \d\e[1;32m]\e[1;32m [\e[1;33m\t \e[1;32m] 
+|\e[1;31m[\e[1;33m \s \h \e[1;31m]
+|__\e[1;31m[\e[1;33m \w \e[1;31m]
+|
+\e[1;31m|__\e[1;31m[\e[1;36m > \e[1;31m]\e[1;39m '" >> $PREFIX/etc/bash.bashrc
+nano $PREFIX/etc/bash.bashrc
+echo -e "$v[$b*$a]$b Listo, PS1 Cambiado(abre nueva ventana)"
+sleep 1
+menu
+else
+pp
+fi
+
+elif [[ $opc6 == "99" ]];then
+pp
+
+else
+echo -e "$e"
+sleep 1
+pp
+fi
+}
+
+rs(){
+banner
+read -p $'\e[1;32m[\e[1;39m*\e[1;33m]\e[1;39m Deseas restablecer el inicio(y/n): ' rss
+if [[ $rss == "y" ]];then
+if [[ -f $PREFIX/etc/bash.bashrc ]];then
+rm $PREFIX/etc/bash.bashrc
+fi
+echo '
+if [ -x /data/data/com.termux/files/usr/libexec/termux/command-not-found ]; then
+        command_not_found_handle() {
+                /data/data/com.termux/files/usr/libexec/termux/command-not-found "$1"
+        }
+fi
+
+PS1="\$ "
+' >> $PREFIX/etc/bash.bashrc
+echo -e "$v[$b*$a]$b Inicio restablecido"
+sleep 1
+menu
+else
+menu
+fi
+}
+
+menu
