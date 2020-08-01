@@ -1,4 +1,4 @@
-#Coded by https://github.com/HiddenSt4r
+#Coded by https://github.com/DeepSociety
 #Si copias deja creditos 😛
 
 rr="\e[0;91m"
@@ -48,7 +48,7 @@ echo -e "$crnd2   | |_) |  __/ (_| | |_| | |_| | | | |_| | |"
 echo -e "$crnd   |____/ \___|\__,_|\__,_|\__|_|_|  \__,_|_|"
 echo -e "
  $a   [!]$b          beautiful v1          $a[!]
- $a   [!]$b https://github.com/HiddenSt4r  $a[!]
+ $a   [!]$b https://github.com/DeepSociety $a[!]
  $a   [!]$b Importante seleccionar la opc 4$a[!]
  $a   [!]$b   Opc 5 restablece el inicio   $a[!]
 "
